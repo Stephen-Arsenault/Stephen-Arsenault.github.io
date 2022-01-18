@@ -59,10 +59,10 @@
     const cpuFrequency = computedFrequency * 2;
     const presentedResistance = readoutResistance - R1; 
 
-	  localStorage.setItem('frequency', `${computedFrequency} Hz`);
+	  localStorage.setItem('frequency', `${cpuFrequency} Hz`);
 	  localStorage.setItem('resistanceSlider', resistance);
 
-	  document.getElementById('frequency').innerText = `CPU: ${computedFrequency} Hz`;
+	  document.getElementById('frequency').innerText = `CPU: ${cpuFrequency} Hz`;
     document.getElementById("bgText").innerText = hertz(cpuFrequency);
 
 	  resistanceReadout.innerText = `${readoutResistance} Ω`;
