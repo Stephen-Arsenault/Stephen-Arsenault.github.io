@@ -1,5 +1,5 @@
   window.onload = function(){
-    frequency = localStorage.getItem('frequency') || parseFloat(document.querySelector("div[id='frequency'] a").value) || 15667000;
+    frequency = localStorage.getItem('frequency') || parseFloat(document.querySelector("#frequency").value) || 15667000;
     resistanceSlider = localStorage.getItem('resistanceSlider') || parseFloat(document.getElementById('resistanceSlider').value) || 1582.8428;
     mode = localStorage.getItem('mode') || 1500;
   
