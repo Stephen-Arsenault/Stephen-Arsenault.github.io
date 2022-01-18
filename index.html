@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>
+    Spicy O'Clock Calculator
+  </title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<body>
+	<div id="bgText"></div>
+	<div id="center">
+		<a href="https://ameblo.jp/keroxiee1016/entry-12721890988.html">Spicy O'Clock</a> Calculator
+		<br/>
+		<form action="#">
+			<div id="frequency"></div>
+			<input type="range" min="1" max="1000" value="50" step="any"  style="width: 23em" id="resistanceSlider"><label id="resistanceReadout">&nbsp;&nbsp; Resistance (Ω)</label>
+			<div id="radio">
+			  <input type="radio" id="SL" value="1500" name="mode" checked> <label for="SL">SL</label>
+			  <input type="radio" id="LC" value="1000" name="mode"> <label for="LC">LC</label>
+			  <input type="radio" id="HT" value="560" name="mode"> <label for="HT">HT</label>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
