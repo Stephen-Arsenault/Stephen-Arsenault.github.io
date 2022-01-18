@@ -65,7 +65,7 @@
 	  document.getElementById('frequency').innerText = `CPU: ${cpuFrequency} Hz`;
     document.getElementById("bgText").innerText = hertz(cpuFrequency);
 
-	  resistanceReadout.innerText = `${readoutResistance} Ω`;
+	  resistanceReadout.innerText = `${presentedResistance} Ω`;
   }
 
   function hertz(hz) {
