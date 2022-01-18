@@ -57,7 +57,7 @@
   	const computedFrequency = Math.round((frequencyEquation + Number.EPSILON) * 1) / 1;
   	const readoutResistance = Math.round((totalResistance + Number.EPSILON) * 100) / 100;
     const cpuFrequency = computedFrequency * 2;
-    const presentedResistance = readoutResistance - R1; 
+    const presentedResistance = Math.round(((readoutResistance - R1) + Number.EPSILON) * 100) / 100;
 
 	  localStorage.setItem('frequency', `${cpuFrequency} Hz`);
 	  localStorage.setItem('resistanceSlider', resistance);
