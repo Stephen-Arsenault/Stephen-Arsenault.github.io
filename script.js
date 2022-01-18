@@ -1,14 +1,14 @@
   window.onload = function(){
-    frequency = localStorage.getItem('frequency') || parseFloat(document.querySelector("#frequency").value) || 15667000;
-    resistanceSlider = localStorage.getItem('resistanceSlider') || parseFloat(document.getElementById('resistanceSlider').value) || 1582.8428;
-    mode = localStorage.getItem('mode') || 1500;
+    let frequency = localStorage.getItem('frequency') || parseFloat(document.querySelector("#frequency").value) || 15667000;
+    let resistanceSlider = localStorage.getItem('resistanceSlider') || parseFloat(document.getElementById('resistanceSlider').value) || 1582.8428;
+    let mode = localStorage.getItem('mode') || 1500;
   
     const inputFrequency = document.getElementById('frequency');
     const inputResistanceSlider = document.querySelector('#resistanceSlider');
     const resistanceReadout = document.querySelector('#resistanceReadout');
 
     inputResistanceSlider.value = resistanceSlider;
-   	inputFrequency.value = frequency;
+   	inputFrequency.value = `CPU: ${frequency} Hz`;
    	resistanceReadout.innerText = `${resistanceSlider} Ω`;
   
     inputFrequency.onkeydown = function(){
@@ -35,7 +35,6 @@
   function calc() {
   	// Inputs
   	const resistance = parseFloat(document.getElementById('resistanceSlider').value);
-  	const frequencyField = document.querySelector("[id='frequency]");
   	const resistanceReadout = document.querySelector('#resistanceReadout');
 
   	let modeResistance;
@@ -45,30 +44,28 @@
         	}
         });
 
-	// Base Values
+	  // Base Values
   	const baseFrequency = 10000000; // 10 MHz
   	const baseResistance = 10000;   // 10 Kilo Ohm
   	const baseMultiplier = 1;
 
-  	// Derivatives
-  	const R1 = 3300; // Ohms
-  	const totalResistance = resistance + R1 + modeResistance;
-
-  	// Equations
+  	// Equation
+    const R1 = 3300; // Ohms
+    const totalResistance = resistance + R1 + modeResistance;
   	const frequencyEquation = baseFrequency * ((baseResistance / (totalResistance)) * 1/baseMultiplier);
-  	const resistanceEquation = '';
-
 
   	const computedFrequency = Math.round((frequencyEquation + Number.EPSILON) * 1) / 1;
   	const readoutResistance = Math.round((totalResistance + Number.EPSILON) * 100) / 100;
+    const cpuFrequency = computedFrequency * 2;
+    const presentedResistance = readoutResistance - R1; 
 
-	localStorage.setItem('frequency', `${computedFrequency} Hz`);
-	localStorage.setItem('resistanceSlider', resistance);
+	  localStorage.setItem('frequency', `${computedFrequency} Hz`);
+	  localStorage.setItem('resistanceSlider', resistance);
 
-	document.getElementById('frequency').innerText = `${computedFrequency} Hz`;
-    document.getElementById("bgText").innerText = hertz(computedFrequency);
+	  document.getElementById('frequency').innerText = `CPU: ${computedFrequency} Hz`;
+    document.getElementById("bgText").innerText = hertz(cpuFrequency);
 
-	resistanceReadout.innerText = `${readoutResistance} Ω`;
+	  resistanceReadout.innerText = `${readoutResistance} Ω`;
   }
 
   function hertz(hz) {

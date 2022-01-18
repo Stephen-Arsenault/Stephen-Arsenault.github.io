@@ -16,7 +16,7 @@
   z-index: 5;
 }
 
-#frequency {
+#frequency, #cpuFrequency {
   font-size: 0.75em;
   color:  #858585;
 }
